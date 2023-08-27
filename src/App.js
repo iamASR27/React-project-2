@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-
+import AddMovieForm from './components/AddMovieForm';
 import MoviesList from './components/MoviesList';
 import './App.css';
 
@@ -16,7 +16,7 @@ function App() {
     // setRetrying(true);
     try {
       const response = await fetch('https://swapi.dev/api/films/');
-      console.log("fetching")
+      // console.log("fetching")
       if (!response.ok) {
         throw new Error("Something went wrong ....Retrying");
       }
@@ -96,8 +96,15 @@ if (isLoading) {
   content = <MoviesList movies={movies} />;
 }
 
+const addMovieHandler = (movie) => {
+  console.log(movie);
+}
+
   return (
     <React.Fragment>
+       <section>
+        <AddMovieForm onAddMovie={addMovieHandler} /> {/* Use the new component */}
+      </section>
       <section>
         <button onClick={fetchMoviesHandler} disabled={retrying}>Fetch Movies</button>
       </section>
