@@ -8,11 +8,12 @@ function App() {
   const [isLoading, setIsloading] = useState(false);
   const [error, setError]  = useState(null);
   const [retrying, setRetrying] = useState(false);
+  // const [initialFetchCompleted, setInitialFetchCompleted] = useState(false);
   
   const fetchMoviesHandler = useCallback(async () => {
     setIsloading(true);
     setError(null);
-    setRetrying(true);
+    // setRetrying(true);
     try {
       const response = await fetch('https://swapi.dev/api/films/');
       console.log("fetching")
@@ -33,9 +34,11 @@ function App() {
       setMovies(transformedMovies);
       setIsloading(false);
       setRetrying(false);
+      // setInitialFetchCompleted(true);
     } catch (error) {
       setError(error.message)
       setRetrying(true);
+      // setInitialFetchCompleted(false);
       // retry();
     }
     setIsloading(false);
@@ -66,17 +69,17 @@ function App() {
   if (retrying) {
     const retryInterval = setInterval(() => {
       fetchMoviesHandler();
-    }, 5000);
+    }, 1000);
     return () => {
       clearInterval(retryInterval);
     };
   }
 }, [retrying, fetchMoviesHandler]);
 
- const cancelRetryHandler = () => {
+const cancelRetryHandler = useCallback(() => {
   setRetrying(false);
   setError(null);
-};
+}, []);
 
 let content = <p>Found no movies</p>;
  
