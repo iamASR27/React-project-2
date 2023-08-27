@@ -33,7 +33,7 @@ const AddMovieForm = ({ onAddMovie }) => {
         <label htmlFor='opening-text'>Opening Text</label>
         <textarea
           id='opening-text'
-          rows={5}
+          rows={3}
           value={newMovieOpeningText}
           onChange={(event) => setNewMovieOpeningText(event.target.value)}
         />

@@ -3,3 +3,13 @@
   margin: 0;
   padding: 0;
 }
+
+.movies-list button {
+  font: inherit;
+  cursor: pointer;
+  background: #8a0a0a;
+  border: 1px solid #300101;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 20px;
+}
