@@ -1,4 +1,4 @@
-import { createStore } from "react-redux";
+import { createStore } from "redux";
 
 const counterReducer = (state = { counter: 0}, action) => {
     if (action.type === 'INCREMENT') {
@@ -9,13 +9,13 @@ const counterReducer = (state = { counter: 0}, action) => {
         return {
             counter: state.counter - 1,
         }
-    } else if ( action.type === 'INCREMENTBY2') {
+    } else if ( action.type === 'INCREMENTBY5') {
         return {
-            counter: state.counter + 2,
+            counter: state.counter + 5,
         }
-    } else if (action.type === 'DECREMENTBY2') {
+    } else if (action.type === 'DECREMENTBY5') {
         return {
-            counter: state.counter - 2,
+            counter: state.counter - 5,
         }
     }
     return state;
